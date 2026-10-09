@@ -1,0 +1,23 @@
+{
+  "name": "proofloop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/web",
+    "apps/api"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c green,cyan \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm run dev --workspace @proofloop/api",
+    "dev:web": "npm run dev --workspace @proofloop/web",
+    "build": "npm run build --workspace @proofloop/web",
+    "start": "npm run start --workspace @proofloop/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.3"
+  }
+}
